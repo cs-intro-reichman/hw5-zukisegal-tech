@@ -35,16 +35,17 @@ public class Wordle {
     {
         for(int i=-0; i<guess.length(); i++)
         {
-            if(containsChar(secret, guess.charAt(i))== true)
-                for(int j=0; j<guess.length(); j++)
+            
                 {
-                    if(secret.charAt(i)==guess.charAt(j))
+                    if(secret.charAt(i)==guess.charAt(i))
                         resultRow[i]= 'G';
-                    else
+                    else if (containsChar(secret, guess.charAt(i))== true)
                         resultRow[i]= 'Y';
+                    else
+                        resultRow[i]= '_';
                     
                 }
-            resultRow[i]= '_';
+            
 
 
         }
@@ -135,9 +136,8 @@ public class Wordle {
                 }
             }
 
-            // Store guess and compute feedback
-            // ... use storeGuess and computeFeedback
-
+            storeGuess(guess, guesses, attempt);
+            computeFeedback(secret, guess, null);
             // Print board
             printBoard(guesses, results, attempt);
 
