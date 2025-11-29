@@ -21,7 +21,7 @@ public class Wordle {
     // return false.
     public static boolean containsChar(String secret, char c) 
     {
-		for(int i=0; i<6; i++)
+		for(int i=0; i<secret.length(); i++)
         {
             if(c== secret.charAt(i))
                 return true;
@@ -39,7 +39,7 @@ public class Wordle {
                 {
                     if(secret.charAt(i)==guess.charAt(i))
                         resultRow[i]= 'G';
-                    else if (containsChar(secret, guess.charAt(i))== true)
+                    else if (containsChar(secret, guess.charAt(i)))
                         resultRow[i]= 'Y';
                     else
                         resultRow[i]= '_';
@@ -137,7 +137,7 @@ public class Wordle {
             }
 
             storeGuess(guess, guesses, attempt);
-            computeFeedback(secret, guess, null);
+            computeFeedback(secret, guess, results[attempt]);
             // Print board
             printBoard(guesses, results, attempt);
 
